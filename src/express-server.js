@@ -50,17 +50,6 @@ app.get('/api/specialists/:offset/:limit', (req, res) => {
   });
 });
 
-app.get('/api/patients', async (req, res) => {
-  const { patient_email } = req.query;
-  try {
-    const result = await client.query('SELECT session_status FROM patients WHERE patient_email=$1', [patient_email]);
-    res.json(result.rows[0]);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Something went wrong' });
-  }
-});
-
 app.listen(port, () => {
   console.log(`OpthalHub Express Server listening on port ${port}`);
 });

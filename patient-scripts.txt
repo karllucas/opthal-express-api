@@ -1,0 +1,7 @@
+* POSTING A LOGGED IN PATIENT (ME): 
+curl -X POST http://127.0.0.1:3002/api/patients -H 'Content-Type: application/json' -d '{ "opthal_name": "Wendy Okello", "charge_per_hour": "2000", "hospital": "Kenyatta", "patient_name": "Karl Irungu", "patient_email": "karlkamakia@gmail.com", "session_status": "Scheduled" }'
+
+
+* CANCEL A SCHEDULED MEETING: 
+curl -X DELETE http://127.0.0.1:3004/api/patients/karlkamakia@gmail.com
+    

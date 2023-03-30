@@ -24,14 +24,19 @@ app.post('/api/patients', async (req, res) => {
     if (result.rows.length > 0 && result.rows[0].session_status === 'Scheduled') {
       res.status(400).json({ message: 'You already have a session scheduled. Cancel first to reschedule another one' });
     } else {
-      const result = await client.query('INSERT INTO patients(opthal_name, charge_per_hour, hospital, patient_name, patient_email, session_status) VALUES($1, $2, $3, $4, $5, $6) RETURNING *', [opthal_name, charge_per_hour, hospital, patient_name, patient_email, 'Scheduled']);
-      res.json(result.rows[0]);
+      if (result.rows.length === 0) {
+        await client.query('INSERT INTO patients(opthal_name, charge_per_hour, hospital, patient_name, patient_email, session_status) VALUES($1, $2, $3, $4, $5, $6) RETURNING *', [opthal_name, charge_per_hour, hospital, patient_name, patient_email, 'Scheduled']);
+      } else {
+        await client.query('UPDATE patients SET opthal_name=$1, charge_per_hour=$2, hospital=$3, patient_name=$4, session_status=$5 WHERE patient_email=$6', [opthal_name, charge_per_hour, hospital, patient_name, 'Scheduled', patient_email]);
+      }
+      res.json({ message: 'Appointment scheduled successfully' });
     }
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Something went wrong' });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Patient Posting Server is ready to go on port ${port}`);
