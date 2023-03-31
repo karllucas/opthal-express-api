@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const pg = require('pg');
 const cors = require('cors');
-const port = 3004;
+const port = 3004; 
 
 app.use(cors()); // Enable CORS
 require('dotenv').config(); // Load environment variables from .env file
@@ -12,7 +12,7 @@ app.use((req, res, next) => {
   next();
 });
 
-/* Sets the Connection String to Postgres
+/* Sets Connection String to Postgres
 and deletes a client */
 const conString = 'postgres://oiapacch:gMPrV_4ZECs4jiw17Bd5x5x-lIJMjNGt@tiny.db.elephantsql.com/oiapacch'; //Postgres Connection String
 const client = new pg.Client(conString);
