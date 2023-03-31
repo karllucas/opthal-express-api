@@ -31,5 +31,5 @@ app.get('/api/patients', async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Schedule Checking Server is listening on port ${port}`);
+  console.log(`Check Schedule Server is listening on port ${port}`);
 });

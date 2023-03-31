@@ -51,5 +51,5 @@ app.get('/api/specialists/:offset/:limit', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`OpthalHub Express Server listening on port ${port}`);
+  console.log(`Get Opthals Server listening on port ${port}`);
 });

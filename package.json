@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"nodemon src/express-server.js\" \"nodemon src/patient.js\" \"nodemon src/scheduled-check.js\""
+    "start": "concurrently \"nodemon src/get-opthals.js\" \"nodemon src/patient.js\" \"nodemon src/scheduled-check.js\" \"nodemon src/delete-patient.js\""
   },
   "keywords": [],
   "author": "",
