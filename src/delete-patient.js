@@ -18,6 +18,8 @@ const conString = 'postgres://oiapacch:gMPrV_4ZECs4jiw17Bd5x5x-lIJMjNGt@tiny.db.
 const client = new pg.Client(conString);
 client.connect();
 
+/* API endpoint that sends 
+a delete request to the pateints table */
 app.delete('/api/patients/:email', async (req, res) => {
     try {
       const email = req.params.email;
